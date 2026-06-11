@@ -1,7 +1,7 @@
 "use client";
 
-import { CompanyMap } from "./company-map";
-import { ContactForm } from "./contact-form";
+import { ClientsSection } from "./clients-section";
+import { ContactSection } from "./contact-section";
 import { HeroBackgroundSlider } from "./hero-background-slider";
 import { useI18n } from "./i18n-provider";
 import { LanguageDropdown } from "./language-dropdown";
@@ -32,6 +32,7 @@ const navHrefs = [
   { href: "#home", id: "home", key: "home" as const },
   { href: "#services", id: "services", key: "services" as const },
   { href: "#profile", id: "profile", key: "profile" as const },
+  { href: "#clients", id: "clients", key: "clients" as const },
   { href: "#contact", id: "contact", key: "contact" as const },
 ] as const;
 
@@ -180,105 +181,23 @@ export function HomeContent() {
           </div>
         </ScrollRevealSection>
 
+        <ScrollRevealSection
+          id="clients"
+          className="border-b border-border/60 py-24"
+        >
+          <div className="mx-auto max-w-6xl px-6">
+            <ClientsSection labels={t.clients} />
+          </div>
+        </ScrollRevealSection>
+
         <ScrollRevealSection id="contact" className="py-24">
           <div className="mx-auto max-w-6xl px-6">
-            <div className="mb-16 max-w-2xl">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                {t.contact.title}
-              </h2>
-              <p className="mt-4 text-lg text-foreground/70">
-                {t.contact.subtitle}
-              </p>
-            </div>
-
-            <div className="mb-12">
-              <CompanyMap
-                query={companyFullAddress}
-                title={t.contact.mapTitle.replace("{address}", companyFullAddress)}
-                mapsUrl={googleMapsUrl}
-                companyName={t.contact.companyName}
-                address={companyContact.address}
-                city={companyContact.city}
-                postalCode={companyContact.postalCode}
-                country={companyContact.country}
-                findUsLabel={t.contact.findUs}
-                openInMapsLabel={t.contact.openInMaps}
-              />
-            </div>
-
-            <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-              <div className="rounded-2xl border border-border bg-surface p-8">
-                <h3 className="text-lg font-semibold text-foreground">
-                  {t.contact.companyName}
-                </h3>
-                <dl className="mt-6 space-y-5">
-                  <div>
-                    <dt className="text-sm font-medium text-foreground/50">
-                      {t.contact.phone}
-                    </dt>
-                    <dd className="mt-1">
-                      <a
-                        href={`tel:${companyContact.phone.replace(/\s/g, "")}`}
-                        className="text-foreground transition hover:text-accent"
-                      >
-                        {companyContact.phone}
-                      </a>
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-sm font-medium text-foreground/50">
-                      {t.contact.address}
-                    </dt>
-                    <dd className="mt-1 text-foreground">
-                      <a
-                        href={googleMapsUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="transition hover:text-accent"
-                      >
-                        {companyContact.address}
-                      </a>
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-sm font-medium text-foreground/50">
-                      {t.contact.city}
-                    </dt>
-                    <dd className="mt-1 text-foreground">
-                      {companyContact.city}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-sm font-medium text-foreground/50">
-                      {t.contact.postalCode}
-                    </dt>
-                    <dd className="mt-1 text-foreground">
-                      {companyContact.postalCode}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-sm font-medium text-foreground/50">
-                      {t.contact.country}
-                    </dt>
-                    <dd className="mt-1 text-foreground">
-                      {companyContact.country}
-                    </dd>
-                  </div>
-                </dl>
-              </div>
-
-              <div className="rounded-2xl border border-border bg-surface p-8">
-                <h3 className="text-lg font-semibold text-foreground">
-                  {t.contact.sendMessage}
-                </h3>
-                <p className="mt-2 text-sm text-foreground/60">
-                  {t.contact.formIntro}
-                </p>
-                <div className="mt-6">
-                  <ContactForm />
-                </div>
-              </div>
-            </div>
+            <ContactSection
+              contact={companyContact}
+              fullAddress={companyFullAddress}
+              mapsUrl={googleMapsUrl}
+              labels={t.contact}
+            />
           </div>
         </ScrollRevealSection>
       </main>

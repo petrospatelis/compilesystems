@@ -1,14 +1,21 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { useI18n } from "./i18n-provider";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
 export function ContactForm() {
   const { t } = useI18n();
+  const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+
+  function handleClear() {
+    formRef.current?.reset();
+    setStatus("idle");
+    setErrorMessage("");
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -46,13 +53,10 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="grid gap-5 sm:grid-cols-2">
-        <div>
-          <label
-            htmlFor="contact-name"
-            className="mb-2 block text-sm font-medium text-foreground/70"
-          >
+    <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
+      <div className="contact-form__row">
+        <div className="form-field">
+          <label htmlFor="contact-name" className="form-field__label">
             {t.form.name}
           </label>
           <input
@@ -62,15 +66,12 @@ export function ContactForm() {
             required
             autoComplete="name"
             disabled={status === "submitting"}
-            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-foreground/40 focus:border-accent focus:ring-2 focus:ring-accent/20 disabled:opacity-60"
+            className="form-field__input"
             placeholder={t.form.namePlaceholder}
           />
         </div>
-        <div>
-          <label
-            htmlFor="contact-email"
-            className="mb-2 block text-sm font-medium text-foreground/70"
-          >
+        <div className="form-field">
+          <label htmlFor="contact-email" className="form-field__label">
             {t.form.email}
           </label>
           <input
@@ -80,17 +81,14 @@ export function ContactForm() {
             required
             autoComplete="email"
             disabled={status === "submitting"}
-            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-foreground/40 focus:border-accent focus:ring-2 focus:ring-accent/20 disabled:opacity-60"
+            className="form-field__input"
             placeholder={t.form.emailPlaceholder}
           />
         </div>
       </div>
 
-      <div>
-        <label
-          htmlFor="contact-subject"
-          className="mb-2 block text-sm font-medium text-foreground/70"
-        >
+      <div className="form-field">
+        <label htmlFor="contact-subject" className="form-field__label">
           {t.form.subject}
         </label>
         <input
@@ -98,16 +96,13 @@ export function ContactForm() {
           name="subject"
           type="text"
           disabled={status === "submitting"}
-          className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-foreground/40 focus:border-accent focus:ring-2 focus:ring-accent/20 disabled:opacity-60"
+          className="form-field__input"
           placeholder={t.form.subjectPlaceholder}
         />
       </div>
 
-      <div>
-        <label
-          htmlFor="contact-message"
-          className="mb-2 block text-sm font-medium text-foreground/70"
-        >
+      <div className="form-field">
+        <label htmlFor="contact-message" className="form-field__label">
           {t.form.message}
         </label>
         <textarea
@@ -116,36 +111,40 @@ export function ContactForm() {
           required
           rows={5}
           disabled={status === "submitting"}
-          className="w-full resize-y rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-foreground/40 focus:border-accent focus:ring-2 focus:ring-accent/20 disabled:opacity-60"
+          className="form-field__input form-field__textarea"
           placeholder={t.form.messagePlaceholder}
         />
       </div>
 
       {status === "success" && (
-        <p
-          role="status"
-          className="rounded-xl border border-accent/30 bg-accent-muted/40 px-4 py-3 text-sm text-foreground"
-        >
+        <p role="status" className="form-feedback form-feedback--success">
           {t.form.success}
         </p>
       )}
 
       {status === "error" && (
-        <p
-          role="alert"
-          className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-600 dark:text-red-400"
-        >
+        <p role="alert" className="form-feedback form-feedback--error">
           {errorMessage}
         </p>
       )}
 
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="btn btn-primary"
-      >
-        {status === "submitting" ? t.form.submitting : t.form.submit}
-      </button>
+      <div className="contact-form__actions">
+        <button
+          type="button"
+          onClick={handleClear}
+          disabled={status === "submitting"}
+          className="btn btn-secondary"
+        >
+          {t.form.clear}
+        </button>
+        <button
+          type="submit"
+          disabled={status === "submitting"}
+          className="btn btn-primary"
+        >
+          {status === "submitting" ? t.form.submitting : t.form.submit}
+        </button>
+      </div>
     </form>
   );
 }
