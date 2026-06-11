@@ -62,10 +62,6 @@ export function HomeContent() {
         >
           <HeroBackgroundSlider />
           <div className="page-container section-y hero-section">
-            <div className="hero-section__brand">
-              <Logo showWordmark iconClassName="hero-section__logo" />
-              <p className="hero-section__slogan">{t.brand.slogan}</p>
-            </div>
             <p className="hero-section__badge">{t.hero.badge}</p>
             <h1 className="hero-section__title">
               {t.hero.titleBefore}

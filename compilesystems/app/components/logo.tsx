@@ -59,7 +59,7 @@ export function Logo({
           )}
           {showSlogan && (
             <span className="text-[11px] font-medium tracking-wide text-foreground/55 sm:text-xs">
-              {slogan}
+              <span className="text-accent">{slogan}</span>
             </span>
           )}
         </span>

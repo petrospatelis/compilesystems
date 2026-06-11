@@ -1420,23 +1420,29 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-radius: 0.9rem;
+  border-radius: 1.125rem;
   border: 1px solid color-mix(in srgb, var(--border) 78%, var(--accent) 22%);
   background: color-mix(in srgb, var(--surface) 96%, transparent);
-  padding: 0.4rem;
+  padding: 0.45rem;
   box-shadow: 0 6px 16px color-mix(in srgb, var(--accent) 10%, transparent);
 }
 
 .client-card--featured .client-card__logo {
   height: 3.25rem;
   width: 3.25rem;
-  padding: 0.45rem;
+  padding: 0.5rem;
+  border-radius: 1.25rem;
 }
 
 .client-card__logo-image {
   height: 100%;
   width: 100%;
   object-fit: contain;
+  border-radius: 0.6875rem;
+}
+
+.client-card--featured .client-card__logo-image {
+  border-radius: 0.8125rem;
 }
 
 .client-card__name {
