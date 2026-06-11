@@ -497,7 +497,18 @@ body {
 }
 
 .site-header {
-  position: relative;
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  width: 100%;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  background: color-mix(in srgb, var(--background) 80%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+body > main {
+  padding-top: var(--header-height);
 }
 
 .site-header__bar {

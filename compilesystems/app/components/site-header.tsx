@@ -61,7 +61,7 @@ export function SiteHeader({ navItems, activeSection }: SiteHeaderProps) {
   }
 
   return (
-    <header className="site-header sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
+    <header className="site-header">
       <nav className="page-container site-header__bar" aria-label={t.navMenu.main}>
         <SmoothScrollLink
           href="#home"
