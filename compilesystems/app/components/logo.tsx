@@ -53,7 +53,7 @@ export function Logo({
       {(showWordmark || showSlogan) && (
         <span className="flex min-w-0 flex-col leading-tight">
           {showWordmark && (
-            <span className="text-lg font-semibold tracking-tight text-foreground">
+            <span className="truncate text-base font-semibold tracking-tight text-foreground min-[480px]:text-lg">
               Compile Systems<span className="text-accent">.</span>
             </span>
           )}

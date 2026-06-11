@@ -50,7 +50,7 @@ export function ScrollToTop() {
       type="button"
       aria-label={t.scrollToTop}
       onClick={scrollToTop}
-      className={`btn btn-icon fixed bottom-6 right-6 z-40 transition-all duration-300 ${
+      className={`btn btn-icon scroll-to-top ${
         visible
           ? "pointer-events-auto translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0"
