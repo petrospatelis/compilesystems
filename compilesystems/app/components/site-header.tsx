@@ -6,6 +6,7 @@ import { useI18n } from "./i18n-provider";
 import { LanguageDropdown } from "./language-dropdown";
 import { Logo } from "./logo";
 import { SmoothScrollLink } from "./smooth-scroll-link";
+import { ThemeToggle } from "./theme-toggle";
 
 type NavItem = {
   href: string;
@@ -90,12 +91,17 @@ export function SiteHeader({ navItems, activeSection }: SiteHeaderProps) {
               </SmoothScrollLink>
             </li>
           ))}
+          <li>
+            <ThemeToggle />
+          </li>
           <LanguageDropdown />
         </ul>
 
-        <button
-          type="button"
-          className="btn btn-ghost site-header__menu-toggle"
+        <div className="site-header__actions">
+          <ThemeToggle />
+          <button
+            type="button"
+            className="btn btn-ghost site-header__menu-toggle"
           aria-expanded={menuOpen}
           aria-controls={menuId}
           aria-label={menuOpen ? t.navMenu.close : t.navMenu.open}
@@ -129,7 +135,8 @@ export function SiteHeader({ navItems, activeSection }: SiteHeaderProps) {
               <path d="M4 17h16" />
             </svg>
           )}
-        </button>
+          </button>
+        </div>
       </nav>
 
       <div
