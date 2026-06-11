@@ -1,17 +1,10 @@
-import { CLIENT_LAYOUT, CLIENT_WEBSITES } from "../lib/clients";
+import Image from "next/image";
+import { CLIENT_LAYOUT, CLIENT_LOGOS, CLIENT_WEBSITES } from "../lib/clients";
 import type { Translations } from "../lib/i18n/translations";
 
 type ClientsSectionProps = {
   labels: Translations["clients"];
 };
-
-function getMonogram(name: string) {
-  const words = name.replace(/&/g, " ").split(/\s+/).filter(Boolean);
-  if (words.length >= 2) {
-    return `${words[0][0]}${words[1][0]}`.toUpperCase();
-  }
-  return name.slice(0, 2).toUpperCase();
-}
 
 function ExternalLinkIcon({ label }: { label: string }) {
   return (
@@ -52,8 +45,9 @@ export function ClientsSection({ labels }: ClientsSectionProps) {
       <ul className="clients-bento">
         {CLIENT_LAYOUT.map(({ id, featured }) => {
           const client = clientsById[id];
-          const website = CLIENT_WEBSITES[id as keyof typeof CLIENT_WEBSITES];
-          if (!client || !website) return null;
+          const website = CLIENT_WEBSITES[id];
+          const logo = CLIENT_LOGOS[id];
+          if (!client || !website || !logo) return null;
 
           return (
             <li
@@ -70,8 +64,14 @@ export function ClientsSection({ labels }: ClientsSectionProps) {
                 <div className="client-card__glow" aria-hidden />
                 <div className="client-card__content">
                   <div className="client-card__top">
-                    <div className="client-card__monogram" aria-hidden>
-                      {getMonogram(client.name)}
+                    <div className="client-card__logo">
+                      <Image
+                        src={logo.src}
+                        alt={`${client.name} logo`}
+                        width={logo.width}
+                        height={logo.height}
+                        className="client-card__logo-image"
+                      />
                     </div>
                     <ExternalLinkIcon label={labels.visitWebsite} />
                   </div>

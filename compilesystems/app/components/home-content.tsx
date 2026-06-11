@@ -6,6 +6,7 @@ import { HeroBackgroundSlider } from "./hero-background-slider";
 import { useI18n } from "./i18n-provider";
 import { LanguageDropdown } from "./language-dropdown";
 import { Logo } from "./logo";
+import { ServiceIcon } from "./service-icons";
 import { useActiveSection } from "../hooks/use-active-section";
 import { ScrollRevealSection } from "./scroll-reveal-section";
 import { ScrollToTop } from "./scroll-to-top";
@@ -130,17 +131,13 @@ export function HomeContent() {
               </p>
             </div>
             <ul className="grid gap-6 sm:grid-cols-2">
-              {t.services.items.map(({ title, description }) => (
-                <li
-                  key={title}
-                  className="group rounded-2xl border border-border bg-surface p-8 transition hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5"
-                >
-                  <h3 className="text-xl font-semibold text-foreground group-hover:text-accent">
-                    {title}
-                  </h3>
-                  <p className="mt-3 leading-relaxed text-foreground/70">
-                    {description}
-                  </p>
+              {t.services.items.map(({ id, title, description }) => (
+                <li key={id} className="service-card group">
+                  <div className="service-card__icon" aria-hidden>
+                    <ServiceIcon id={id} />
+                  </div>
+                  <h3 className="service-card__title">{title}</h3>
+                  <p className="service-card__description">{description}</p>
                 </li>
               ))}
             </ul>
