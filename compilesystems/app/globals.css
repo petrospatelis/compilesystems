@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fafafa;
+  --foreground: #0f172a;
+  --accent: #2563eb;
+  --accent-muted: #dbeafe;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --font-avenir:
+    Avenir, "Avenir Next", "Avenir Next LT Pro", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-muted: var(--accent-muted);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --font-sans: var(--font-avenir);
+  --font-mono: var(--font-avenir);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #030712;
+    --foreground: #f8fafc;
+    --accent: #3b82f6;
+    --accent-muted: #1e3a5f;
+    --surface: #0f172a;
+    --border: #1e293b;
+  }
+}
+
+html,
+body {
+  font-family: var(--font-avenir);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes scroll-target-highlight {
+  0% {
+    box-shadow: inset 0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent);
+  }
+  35% {
+    box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  100% {
+    box-shadow: inset 0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent);
+  }
+}
+
+.scroll-target-highlight {
+  animation: scroll-target-highlight 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-background-image {
+  opacity: 0;
+  transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-background-image.is-active {
+  opacity: 1;
+  filter: brightness(1.12) saturate(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .scroll-target-highlight {
+    animation: none;
+  }
+
+  .hero-background-image {
+    transition: none;
+  }
+
+  .hero-background-image:not(.is-active) {
+    visibility: hidden;
+  }
+}
