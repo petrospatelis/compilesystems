@@ -3,9 +3,9 @@ import { I18nProvider } from "./components/i18n-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Compile Systems Ltd | Software Engineering",
+  title: "Compile Systems Ltd | Your vision. Our code.",
   description:
-    "Compile Systems Ltd delivers modern software engineering — architecture, development, and delivery.",
+    "Compile Systems Ltd — IT, agile, cloud, web and mobile engineering. Your vision. Our code.",
 };
 
 export default function RootLayout({

@@ -142,7 +142,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex h-12 items-center rounded-xl bg-accent px-6 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+        className="btn btn-primary"
       >
         {status === "submitting" ? t.form.submitting : t.form.submit}
       </button>

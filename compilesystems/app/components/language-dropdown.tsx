@@ -53,7 +53,7 @@ export function LanguageDropdown() {
         aria-expanded={open}
         aria-controls={listboxId}
         onClick={() => setOpen((current) => !current)}
-        className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-foreground/70 transition-colors hover:bg-accent-muted/50 hover:text-foreground"
+        className="btn btn-ghost gap-1.5"
       >
         <span>{localeShortLabels[locale]}</span>
         <svg
@@ -86,7 +86,7 @@ export function LanguageDropdown() {
                 onClick={() => selectLocale(code)}
                 className={`flex w-full items-center justify-between gap-3 px-3 py-2 text-left text-sm transition-colors ${
                   locale === code
-                    ? "bg-accent-muted/50 font-medium text-foreground"
+                    ? "bg-accent font-medium text-white"
                     : "text-foreground/70 hover:bg-accent-muted/30 hover:text-foreground"
                 }`}
               >
