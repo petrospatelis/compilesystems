@@ -11,9 +11,16 @@ type CompanyContact = {
   country: string;
 };
 
+type MapLocation = {
+  latitude: number;
+  longitude: number;
+  zoom: number;
+};
+
 type ContactSectionProps = {
   contact: CompanyContact;
   fullAddress: string;
+  mapLocation: MapLocation;
   mapsUrl: string;
   labels: Translations["contact"];
 };
@@ -115,6 +122,7 @@ function DetailItem({ icon, label, children }: DetailItemProps) {
 export function ContactSection({
   contact,
   fullAddress,
+  mapLocation,
   mapsUrl,
   labels,
 }: ContactSectionProps) {
@@ -128,7 +136,9 @@ export function ContactSection({
       </div>
 
       <CompanyMap
-        query={fullAddress}
+        latitude={mapLocation.latitude}
+        longitude={mapLocation.longitude}
+        zoom={mapLocation.zoom}
         title={labels.mapTitle.replace("{address}", fullAddress)}
         mapsUrl={mapsUrl}
         companyName={labels.companyName}

@@ -11,23 +11,7 @@ import { useActiveSection } from "../hooks/use-active-section";
 import { ScrollRevealSection } from "./scroll-reveal-section";
 import { ScrollToTop } from "./scroll-to-top";
 import { SmoothScrollLink } from "./smooth-scroll-link";
-
-const companyContact = {
-  phone: "+44 20 7946 0958",
-  address: "42 Tech Lane, Floor 3",
-  city: "London",
-  postalCode: "EC2A 4NE",
-  country: "United Kingdom",
-} as const;
-
-const companyFullAddress = [
-  companyContact.address,
-  companyContact.city,
-  companyContact.postalCode,
-  companyContact.country,
-].join(", ");
-
-const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(companyFullAddress)}`;
+import { companyMapLocation } from "../lib/company-location";
 
 const navHrefs = [
   { href: "#home", id: "home", key: "home" as const },
@@ -42,6 +26,14 @@ const navSectionIds = navHrefs.map(({ id }) => id);
 export function HomeContent() {
   const { t } = useI18n();
   const activeSection = useActiveSection(navSectionIds);
+  const { companyContact } = t;
+  const companyFullAddress = [
+    companyContact.address,
+    companyContact.city,
+    companyContact.postalCode,
+    companyContact.country,
+  ].join(", ");
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${companyMapLocation.latitude},${companyMapLocation.longitude}&zoom=${companyMapLocation.zoom}`;
 
   return (
     <>
@@ -138,6 +130,7 @@ export function HomeContent() {
             <ContactSection
               contact={companyContact}
               fullAddress={companyFullAddress}
+              mapLocation={companyMapLocation}
               mapsUrl={googleMapsUrl}
               labels={t.contact}
             />

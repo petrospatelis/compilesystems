@@ -1,5 +1,7 @@
 type CompanyMapProps = {
-  query: string;
+  latitude: number;
+  longitude: number;
+  zoom: number;
   title: string;
   mapsUrl: string;
   companyName: string;
@@ -49,7 +51,9 @@ function ExternalLinkIcon() {
 }
 
 export function CompanyMap({
-  query,
+  latitude,
+  longitude,
+  zoom,
   title,
   mapsUrl,
   companyName,
@@ -60,7 +64,7 @@ export function CompanyMap({
   findUsLabel,
   openInMapsLabel,
 }: CompanyMapProps) {
-  const src = `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+  const src = `https://www.google.com/maps?q=${latitude},${longitude}&z=${zoom}&output=embed`;
   const locationLine = `${city}, ${postalCode}, ${country}`;
 
   return (
