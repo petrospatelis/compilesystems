@@ -56,6 +56,7 @@
 }
 
 [data-theme="light"] {
+  color-scheme: light;
   --background: #fafafa;
   --foreground: #0f172a;
   --accent: #2563eb;
@@ -65,6 +66,7 @@
 }
 
 html {
+  color-scheme: dark;
   scroll-behavior: auto;
   scroll-padding-top: var(--header-height);
   overflow-x: clip;
@@ -2147,6 +2149,14 @@ body > main {
 
 .client-card--featured .client-card__logo-image {
   border-radius: 0.8125rem;
+}
+
+[data-theme="light"] .client-card__logo--jpinox {
+  border-radius: 9999px;
+}
+
+[data-theme="light"] .client-card__logo--jpinox .client-card__logo-image {
+  border-radius: 9999px;
 }
 
 .client-card__name {

@@ -64,7 +64,9 @@ export function ClientsSection({ labels }: ClientsSectionProps) {
                 <div className="client-card__glow" aria-hidden />
                 <div className="client-card__content">
                   <div className="client-card__top">
-                    <div className="client-card__logo">
+                    <div
+                      className={`client-card__logo${id === "jpinox" ? " client-card__logo--jpinox" : ""}`}
+                    >
                       <Image
                         src={logo.src}
                         alt={`${client.name} logo`}

@@ -73,7 +73,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem("compile-systems-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem("compile-systems-theme");document.documentElement.setAttribute("data-theme",t==="light"?"light":"dark");}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();`,
           }}
         />
       </head>
