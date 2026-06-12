@@ -64,16 +64,20 @@ export type Translations = {
     items: ServiceItem[];
   };
   profile: {
+    eyebrow: string;
     title: string;
     paragraphs: [string, string];
     stats: StatItem[];
     howWeWork: {
+      eyebrow: string;
       title: string;
       subtitle: string;
       steps: ProcessStep[];
     };
     techStack: {
+      eyebrow: string;
       title: string;
+      subtitle: string;
       items: string[];
     };
   };
@@ -700,6 +704,7 @@ export const translations: Record<Locale, Translations> = {
       items: servicesEn,
     },
     profile: {
+      eyebrow: "About us",
       title: "Profile",
       paragraphs: [
         "Compile Systems Ltd is a software engineering consultancy founded on clarity, craftsmanship, and delivery. We work alongside your team — not around it — to turn complex problems into elegant, maintainable solutions.",
@@ -712,13 +717,16 @@ export const translations: Record<Locale, Translations> = {
         { label: "Stack", value: "Modern Web" },
       ],
       howWeWork: {
+        eyebrow: "4-step delivery",
         title: "How we work",
         subtitle:
           "A clear, collaborative process from first conversation to production.",
         steps: howWeWorkEn,
       },
       techStack: {
+        eyebrow: "Capabilities",
         title: "Tech stack",
+        subtitle: "Production-ready tools we use every day.",
         items: techStackItems,
       },
     },
@@ -833,6 +841,7 @@ export const translations: Record<Locale, Translations> = {
       items: servicesEl,
     },
     profile: {
+      eyebrow: "Σχετικά με εμάς",
       title: "Προφίλ",
       paragraphs: [
         "Η Compile Systems Ltd είναι μια εταιρεία συμβουλευτικής μηχανικής λογισμικού, βασισμένη στη σαφήνεια, την τεχνική δεξιοτεχνία και την παράδοση. Εργαζόμαστε δίπλα στην ομάδα σας — όχι γύρω της — για να μετατρέψουμε σύνθετα προβλήματα σε κομψές, συντηρήσιμες λύσεις.",
@@ -845,13 +854,16 @@ export const translations: Record<Locale, Translations> = {
         { label: "Stack", value: "Modern Web" },
       ],
       howWeWork: {
+        eyebrow: "4 βήματα παράδοσης",
         title: "Πώς δουλεύουμε",
         subtitle:
           "Μια σαφής, συνεργατική διαδικασία από την πρώτη συζήτηση μέχρι την παραγωγή.",
         steps: howWeWorkEl,
       },
       techStack: {
+        eyebrow: "Δυνατότητες",
         title: "Τεχνολογίες",
+        subtitle: "Εργαλεία έτοιμα για παραγωγή που χρησιμοποιούμε καθημερινά.",
         items: techStackItems,
       },
     },
@@ -966,6 +978,7 @@ export const translations: Record<Locale, Translations> = {
       items: servicesFil,
     },
     profile: {
+      eyebrow: "Tungkol sa amin",
       title: "Profile",
       paragraphs: [
         "Ang Compile Systems Ltd ay isang software engineering consultancy na nakabatay sa kalinawan, craftsmanship, at delivery. Nakikipagtrabaho kami kasama ang inyong team — hindi sa paligid nito — upang gawing elegant at madaling-maintain na solusyon ang mga komplikadong problema.",
@@ -978,13 +991,16 @@ export const translations: Record<Locale, Translations> = {
         { label: "Stack", value: "Modern Web" },
       ],
       howWeWork: {
+        eyebrow: "4-step na delivery",
         title: "Paano kami nagtatrabaho",
         subtitle:
           "Isang malinaw at collaborative na proseso mula sa unang usapan hanggang sa production.",
         steps: howWeWorkFil,
       },
       techStack: {
+        eyebrow: "Capabilities",
         title: "Tech stack",
+        subtitle: "Production-ready na tools na ginagamit namin araw-araw.",
         items: techStackItems,
       },
     },
