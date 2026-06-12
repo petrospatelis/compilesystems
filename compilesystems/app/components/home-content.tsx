@@ -1,17 +1,24 @@
 "use client";
 
+import { useEffect } from "react";
 import { ClientsSection } from "./clients-section";
 import { ContactSection } from "./contact-section";
 import { HeroBackgroundSlider } from "./hero-background-slider";
 import { useI18n } from "./i18n-provider";
-import { Logo } from "./logo";
+import { ProfileSection } from "./profile-section";
 import { ServiceIcon } from "./service-icons";
 import { SiteHeader } from "./site-header";
 import { useActiveSection } from "../hooks/use-active-section";
 import { ScrollRevealSection } from "./scroll-reveal-section";
 import { ScrollToTop } from "./scroll-to-top";
+import { SiteFooter } from "./site-footer";
 import { SmoothScrollLink } from "./smooth-scroll-link";
 import { companyMapLocation } from "../lib/company-location";
+import {
+  HEADER_OFFSET,
+  highlightSection,
+  smoothScrollTo,
+} from "../lib/smooth-scroll";
 
 const navHrefs = [
   { href: "#home", id: "home", key: "home" as const },
@@ -34,6 +41,26 @@ export function HomeContent() {
     companyContact.country,
   ].join(", ");
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${companyMapLocation.latitude},${companyMapLocation.longitude}&zoom=${companyMapLocation.zoom}`;
+
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+
+    const target = document.getElementById(hash);
+    if (!target) return;
+
+    window.scrollTo(0, 0);
+
+    requestAnimationFrame(() => {
+      smoothScrollTo(target, {
+        offset: HEADER_OFFSET,
+        onComplete: () => {
+          highlightSection(target);
+          history.replaceState(null, "", `#${hash}`);
+        },
+      });
+    });
+  }, []);
 
   return (
     <>
@@ -99,20 +126,8 @@ export function HomeContent() {
           id="profile"
           className="border-b border-border/60 section-y"
         >
-          <div className="page-container profile-grid">
-            <div>
-              <h2 className="section-title">{t.profile.title}</h2>
-              <p className="section-body">{t.profile.paragraphs[0]}</p>
-              <p className="section-body section-body--follow">{t.profile.paragraphs[1]}</p>
-            </div>
-            <dl className="profile-stats">
-              {t.profile.stats.map(({ label, value }) => (
-                <div key={label} className="profile-stat">
-                  <dt className="profile-stat__label">{label}</dt>
-                  <dd className="profile-stat__value">{value}</dd>
-                </div>
-              ))}
-            </dl>
+          <div className="page-container">
+            <ProfileSection labels={t.profile} />
           </div>
         </ScrollRevealSection>
 
@@ -124,7 +139,6 @@ export function HomeContent() {
             <ClientsSection labels={t.clients} />
           </div>
         </ScrollRevealSection>
-
         <ScrollRevealSection id="contact" className="section-y">
           <div className="page-container">
             <ContactSection
@@ -140,16 +154,7 @@ export function HomeContent() {
 
       <ScrollToTop />
 
-      <footer className="site-footer">
-        <div className="page-container site-footer__inner">
-          <p className="site-footer__text">
-            {t.footer.copyright.replace(
-              "{year}",
-              String(new Date().getFullYear()),
-            )}
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

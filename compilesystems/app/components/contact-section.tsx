@@ -4,6 +4,7 @@ import { CompanyMap } from "./company-map";
 import { ContactForm } from "./contact-form";
 
 type CompanyContact = {
+  email: string;
   phone: string;
   address: string;
   city: string;
@@ -119,6 +120,24 @@ function DetailItem({ icon, label, children }: DetailItemProps) {
   );
 }
 
+function EmailIcon() {
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-4 w-4 text-accent"
+    >
+      <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+    </svg>
+  );
+}
+
 export function ContactSection({
   contact,
   fullAddress,
@@ -127,6 +146,7 @@ export function ContactSection({
   labels,
 }: ContactSectionProps) {
   const phoneHref = `tel:${contact.phone.replace(/\s/g, "")}`;
+  const emailHref = `mailto:${contact.email}`;
 
   return (
     <div className="contact-section">
@@ -164,6 +184,11 @@ export function ContactSection({
             </div>
           </header>
           <dl className="surface-card__body contact-details">
+            <DetailItem icon={<EmailIcon />} label={labels.email}>
+              <a href={emailHref} className="contact-link">
+                {contact.email}
+              </a>
+            </DetailItem>
             <DetailItem icon={<PhoneIcon />} label={labels.phone}>
               <a href={phoneHref} className="contact-link">
                 {contact.phone}

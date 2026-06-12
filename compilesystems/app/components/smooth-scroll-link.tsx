@@ -11,28 +11,39 @@ type SmoothScrollLinkProps = ComponentPropsWithoutRef<"a"> & {
   href: string;
 };
 
+function getHashTargetId(href: string): string | null {
+  if (href.startsWith("#") && href.length > 1) {
+    return href.slice(1);
+  }
+
+  const match = href.match(/^\/#(.+)$/);
+  return match?.[1] ?? null;
+}
+
 export function SmoothScrollLink({
   href,
   onClick,
   children,
   ...props
 }: SmoothScrollLinkProps) {
-  const isHashLink = href.startsWith("#") && href.length > 1;
+  const targetId = getHashTargetId(href);
 
   function handleClick(event: React.MouseEvent<HTMLAnchorElement>) {
     onClick?.(event);
-    if (event.defaultPrevented || !isHashLink) return;
+    if (event.defaultPrevented || !targetId) return;
+    if (window.location.pathname !== "/") return;
 
     event.preventDefault();
-    const id = href.slice(1);
-    const target = document.getElementById(id);
+    const target = document.getElementById(targetId);
     if (!target) return;
+
+    const hashHref = `#${targetId}`;
 
     smoothScrollTo(target, {
       offset: HEADER_OFFSET,
       onComplete: () => {
         highlightSection(target);
-        history.replaceState(null, "", href);
+        history.replaceState(null, "", hashHref);
       },
     });
   }
