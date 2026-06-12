@@ -1,20 +1,47 @@
 "use client";
 
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useI18n } from "./i18n-provider";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
+const FEEDBACK_TIMEOUT_MS = 3000;
+
 export function ContactForm() {
   const { t } = useI18n();
   const formRef = useRef<HTMLFormElement>(null);
+  const feedbackTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
-  function handleClear() {
-    formRef.current?.reset();
+  function clearFeedbackTimeout() {
+    if (feedbackTimeoutRef.current !== null) {
+      clearTimeout(feedbackTimeoutRef.current);
+      feedbackTimeoutRef.current = null;
+    }
+  }
+
+  function resetFeedback() {
     setStatus("idle");
     setErrorMessage("");
+  }
+
+  useEffect(() => {
+    if (status !== "success" && status !== "error") return;
+
+    clearFeedbackTimeout();
+    feedbackTimeoutRef.current = setTimeout(() => {
+      feedbackTimeoutRef.current = null;
+      resetFeedback();
+    }, FEEDBACK_TIMEOUT_MS);
+
+    return clearFeedbackTimeout;
+  }, [status]);
+
+  function handleClear() {
+    clearFeedbackTimeout();
+    formRef.current?.reset();
+    resetFeedback();
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {

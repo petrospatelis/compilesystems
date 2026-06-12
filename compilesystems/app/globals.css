@@ -1857,19 +1857,27 @@ body > main {
 }
 
 .form-feedback--success {
-  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
-  background: color-mix(in srgb, var(--accent-muted) 45%, transparent);
-  color: var(--foreground);
+  border: 1px solid color-mix(in srgb, #22c55e 38%, transparent);
+  background: color-mix(in srgb, #22c55e 14%, transparent);
+  color: #86efac;
+}
+
+[data-theme="light"] .form-feedback--success {
+  border: 1px solid color-mix(in srgb, #16a34a 30%, transparent);
+  background: color-mix(in srgb, #22c55e 10%, transparent);
+  color: #15803d;
 }
 
 .form-feedback--error {
-  border: 1px solid color-mix(in srgb, #ef4444 30%, transparent);
-  background: color-mix(in srgb, #ef4444 10%, transparent);
-  color: #f87171;
+  border: 1px solid color-mix(in srgb, #ef4444 38%, transparent);
+  background: color-mix(in srgb, #ef4444 14%, transparent);
+  color: #fca5a5;
 }
 
 [data-theme="light"] .form-feedback--error {
-  color: #dc2626;
+  border: 1px solid color-mix(in srgb, #dc2626 28%, transparent);
+  background: color-mix(in srgb, #ef4444 10%, transparent);
+  color: #b91c1c;
 }
 
 .contact-form__actions {
