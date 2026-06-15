@@ -269,10 +269,10 @@ export function SiteFooter() {
 
           <div
             aria-label={t.footer.language}
-            className="site-footer__column"
+            className="site-footer__column site-footer__column--language"
           >
             <h2 className="site-footer__heading">{t.footer.language}</h2>
-            <ul className="site-footer__links">
+            <ul className="site-footer__language-options">
               {locales.map((code) => (
                 <li key={code}>
                   <button
@@ -282,6 +282,7 @@ export function SiteFooter() {
                       locale === code ? " is-active" : ""
                     }`}
                     aria-current={locale === code ? "true" : undefined}
+                    aria-label={localeLabels[code]}
                   >
                     {localeLabels[code]}
                   </button>
