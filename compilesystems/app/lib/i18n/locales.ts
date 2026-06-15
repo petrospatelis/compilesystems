@@ -11,3 +11,7 @@ export const localeLabels: Record<Locale, string> = {
 };
 
 export const LOCALE_STORAGE_KEY = "compile-systems-locale";
+
+export function isLocale(value: string): value is Locale {
+  return (locales as readonly string[]).includes(value);
+}

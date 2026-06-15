@@ -10,6 +10,7 @@ import {
 } from "react";
 import {
   defaultLocale,
+  isLocale,
   LOCALE_STORAGE_KEY,
   type Locale,
 } from "../lib/i18n/locales";
@@ -22,10 +23,6 @@ type I18nContextValue = {
 };
 
 const I18nContext = createContext<I18nContextValue | null>(null);
-
-function isLocale(value: string): value is Locale {
-  return value === "en" || value === "el" || value === "fil";
-}
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(defaultLocale);

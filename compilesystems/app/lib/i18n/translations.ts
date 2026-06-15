@@ -114,10 +114,15 @@ export type Translations = {
   form: {
     name: string;
     email: string;
+    phone: string;
     subject: string;
     message: string;
     namePlaceholder: string;
     emailPlaceholder: string;
+    phonePlaceholder: string;
+    phoneHint: string;
+    phoneCountryCodeRequired: string;
+    phoneInvalid: string;
     subjectPlaceholder: string;
     messagePlaceholder: string;
     submit: string;
@@ -327,6 +332,7 @@ const techStackItems = [
   "Next.js",
   "Node.js",
   "Python",
+  "AI",
   "PostgreSQL",
   "AWS",
   "Docker",
@@ -708,7 +714,7 @@ export const translations: Record<Locale, Translations> = {
       title: "Profile",
       paragraphs: [
         "Compile Systems Ltd is a software engineering consultancy founded on clarity, craftsmanship, and delivery. We work alongside your team — not around it — to turn complex problems into elegant, maintainable solutions.",
-        "Whether you need a greenfield product, a legacy migration, or senior engineering capacity, we bring the rigour of a compiler and the pragmatism of a startup.",
+        "Whether you need a greenfield product, a legacy migration, or senior engineering capacity, we bring the rigour of a compiler and the pragmatism of a startup — using AI thoughtfully where it accelerates delivery without compromising quality.",
       ],
       stats: [
         { label: "Founded", value: "2024" },
@@ -766,10 +772,16 @@ export const translations: Record<Locale, Translations> = {
     form: {
       name: "Name",
       email: "Email",
+      phone: "Phone (optional, include country code)",
       subject: "Subject",
       message: "Message",
       namePlaceholder: "Your name",
       emailPlaceholder: "you@company.com",
+      phonePlaceholder: "+30 693 669 6835",
+      phoneHint: "Include your country code, starting with +",
+      phoneCountryCodeRequired:
+        "Please include your country code (e.g. +30) with your phone number.",
+      phoneInvalid: "Please enter a valid international phone number.",
       subjectPlaceholder: "How can we help?",
       messagePlaceholder: "Tell us about your project or question...",
       submit: "Send Message",
@@ -845,7 +857,7 @@ export const translations: Record<Locale, Translations> = {
       title: "Προφίλ",
       paragraphs: [
         "Η Compile Systems Ltd είναι μια εταιρεία συμβουλευτικής μηχανικής λογισμικού, βασισμένη στη σαφήνεια, την τεχνική δεξιοτεχνία και την παράδοση. Εργαζόμαστε δίπλα στην ομάδα σας — όχι γύρω της — για να μετατρέψουμε σύνθετα προβλήματα σε κομψές, συντηρήσιμες λύσεις.",
-        "Είτε χρειάζεστε νέο προϊόν, μετάβαση από παλαιό σύστημα ή εμπειρογνώμονες μηχανικούς, φέρνουμε την ακρίβεια ενός compiler και τον πραγματισμό μιας startup.",
+        "Είτε χρειάζεστε νέο προϊόν, μετάβαση από παλαιό σύστημα ή εμπειρογνώμονες μηχανικούς, φέρνουμε την ακρίβεια ενός compiler και τον πραγματισμό μιας startup — χρησιμοποιώντας την AI με σύνεση όπου επιταχύνει την παράδοση χωρίς συμβιβασμούς στην ποιότητα.",
       ],
       stats: [
         { label: "Ίδρυση", value: "2024" },
@@ -903,10 +915,16 @@ export const translations: Record<Locale, Translations> = {
     form: {
       name: "Όνομα",
       email: "Email",
+      phone: "Τηλέφωνο (προαιρετικό, με κωδικό χώρας)",
       subject: "Θέμα",
       message: "Μήνυμα",
       namePlaceholder: "Το όνομά σας",
       emailPlaceholder: "you@company.com",
+      phonePlaceholder: "+30 693 669 6835",
+      phoneHint: "Συμπεριλάβετε τον κωδικό χώρας, ξεκινώντας με +",
+      phoneCountryCodeRequired:
+        "Συμπεριλάβετε τον κωδικό χώρας (π.χ. +30) στο τηλέφωνό σας.",
+      phoneInvalid: "Εισαγάγετε ένα έγκυρο διεθνές τηλέφωνο.",
       subjectPlaceholder: "Πώς μπορούμε να βοηθήσουμε;",
       messagePlaceholder: "Περιγράψτε το έργο ή την ερώτησή σας...",
       submit: "Αποστολή Μηνυμάτος",
@@ -982,7 +1000,7 @@ export const translations: Record<Locale, Translations> = {
       title: "Profile",
       paragraphs: [
         "Ang Compile Systems Ltd ay isang software engineering consultancy na nakabatay sa kalinawan, craftsmanship, at delivery. Nakikipagtrabaho kami kasama ang inyong team — hindi sa paligid nito — upang gawing elegant at madaling-maintain na solusyon ang mga komplikadong problema.",
-        "Kailangan man ninyo ng bagong produkto, legacy migration, o senior engineering capacity, dala namin ang husay ng compiler at ang pragmatismo ng startup.",
+        "Kailangan man ninyo ng bagong produkto, legacy migration, o senior engineering capacity, dala namin ang husay ng compiler at ang pragmatismo ng startup — gamit ang AI nang may pag-iisip kung saan mapapabilis nito ang delivery nang hindi isinasakripisyo ang kalidad.",
       ],
       stats: [
         { label: "Itinatag", value: "2024" },
@@ -1040,10 +1058,16 @@ export const translations: Record<Locale, Translations> = {
     form: {
       name: "Pangalan",
       email: "Email",
+      phone: "Telepono (opsyonal, may country code)",
       subject: "Paksa",
       message: "Mensahe",
       namePlaceholder: "Inyong pangalan",
       emailPlaceholder: "you@company.com",
+      phonePlaceholder: "+63 917 123 4567",
+      phoneHint: "Isama ang country code, simula sa +",
+      phoneCountryCodeRequired:
+        "Isama ang country code (hal. +63) sa inyong numero ng telepono.",
+      phoneInvalid: "Maglagay ng valid na international phone number.",
       subjectPlaceholder: "Paano kami makakatulong?",
       messagePlaceholder: "Sabihin sa amin ang tungkol sa inyong proyekto o tanong...",
       submit: "Ipadala ang Mensahe",
