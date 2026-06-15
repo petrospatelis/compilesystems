@@ -1,4 +1,5 @@
 import type { Locale } from "./locales";
+import { cantoneseTranslations } from "./cantonese";
 
 import type { ServiceIconId } from "../services";
 import { COMPANY_EMAIL } from "../site";
@@ -1244,4 +1245,5 @@ export const translations: Record<Locale, Translations> = {
       slogan: "Ang inyong vision. Ang aming code.",
     },
   },
+  yue: cantoneseTranslations,
 };

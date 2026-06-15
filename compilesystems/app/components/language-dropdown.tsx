@@ -1,14 +1,8 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { localeLabels, locales, type Locale } from "../lib/i18n/locales";
+import { localeLabels, localeShortLabels, locales, type Locale } from "../lib/i18n/locales";
 import { useI18n } from "./i18n-provider";
-
-const localeShortLabels: Record<Locale, string> = {
-  en: "EN",
-  el: "EL",
-  fil: "FIL",
-};
 
 export function LanguageDropdown() {
   const { locale, setLocale, t } = useI18n();

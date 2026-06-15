@@ -27,6 +27,7 @@ const displayLocaleBySiteLocale: Record<Locale, string> = {
   en: "en-GB",
   el: "el-GR",
   fil: "fil-PH",
+  yue: "zh-HK",
 };
 
 export function resolveDisplayLocale(locale?: string): string {
