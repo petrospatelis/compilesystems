@@ -772,7 +772,7 @@ export const translations: Record<Locale, Translations> = {
     form: {
       name: "Name",
       email: "Email",
-      phone: "Phone (optional, include country code)",
+      phone: "Phone (optional)",
       subject: "Subject",
       message: "Message",
       namePlaceholder: "Your name",
@@ -915,7 +915,7 @@ export const translations: Record<Locale, Translations> = {
     form: {
       name: "Όνομα",
       email: "Email",
-      phone: "Τηλέφωνο (προαιρετικό, με κωδικό χώρας)",
+      phone: "Τηλέφωνο (προαιρετικό)",
       subject: "Θέμα",
       message: "Μήνυμα",
       namePlaceholder: "Το όνομά σας",
@@ -1058,7 +1058,7 @@ export const translations: Record<Locale, Translations> = {
     form: {
       name: "Pangalan",
       email: "Email",
-      phone: "Telepono (opsyonal, may country code)",
+      phone: "Telepono (opsyonal)",
       subject: "Paksa",
       message: "Mensahe",
       namePlaceholder: "Inyong pangalan",

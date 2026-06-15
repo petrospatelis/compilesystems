@@ -23,9 +23,17 @@ export function SiteFooter() {
       <div className="page-container site-footer__inner">
         <div className="site-footer__brand">
           <Link href="/" className="site-footer__brand-link">
-            <Logo showWordmark />
+            <Logo
+              showSlogan
+              slogan={t.brand.slogan}
+              className="site-header__brand-full"
+            />
+            <Logo
+              showWordmark
+              className="site-header__brand-compact"
+              iconClassName="h-8 w-8"
+            />
           </Link>
-          <p className="site-footer__tagline">{t.footer.tagline}</p>
         </div>
 
         <div className="site-footer__columns">
