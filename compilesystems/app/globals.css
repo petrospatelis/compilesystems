@@ -900,14 +900,8 @@ body {
 
 @media (min-width: 640px) {
   .site-footer__columns {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .site-footer__columns {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2.5rem;
   }
 }
 
