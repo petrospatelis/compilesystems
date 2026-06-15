@@ -138,13 +138,22 @@ export type Translations = {
     contact: string;
     privacyPolicy: string;
     termsOfUse: string;
+    cookiePolicy: string;
     copyright: string;
+    cta: string;
+    language: string;
+    followUs: string;
+    registration: string;
+    vat: string;
+    linkedin: string;
+    github: string;
   };
   legal: {
     backToHome: string;
     lastUpdated: string;
     privacy: LegalDocument;
     terms: LegalDocument;
+    cookies: LegalDocument;
   };
   scrollToTop: string;
   navMenu: {
@@ -651,6 +660,105 @@ const termsFil: LegalDocument = {
   ],
 };
 
+const cookiesEn: LegalDocument = {
+  title: "Cookie Policy",
+  intro:
+    "This policy explains how Compile Systems Ltd uses cookies and similar technologies on our website. We keep this to a minimum and do not use advertising or third-party tracking cookies.",
+  sections: [
+    {
+      title: "What are cookies?",
+      paragraphs: [
+        "Cookies are small text files stored on your device when you visit a website. Similar technologies, such as browser local storage, can also remember preferences between visits.",
+      ],
+    },
+    {
+      title: "Cookies we use",
+      paragraphs: [
+        "We currently use only essential preference storage: your selected theme (light or dark) and your selected language. These are stored locally in your browser to improve your experience on return visits.",
+        "We do not use analytics, advertising, or social-media tracking cookies on this website at this time.",
+      ],
+    },
+    {
+      title: "Managing cookies",
+      paragraphs: [
+        "You can clear site data at any time through your browser settings. Clearing this data will reset your theme and language preferences on your next visit.",
+      ],
+    },
+    {
+      title: "Contact",
+      paragraphs: [
+        `Questions about this policy can be sent to ${COMPANY_EMAIL}.`,
+      ],
+    },
+  ],
+};
+
+const cookiesEl: LegalDocument = {
+  title: "Πολιτική Cookies",
+  intro:
+    "Η παρούσα πολιτική εξηγεί πώς η Compile Systems Ltd χρησιμοποιεί cookies και παρόμοιες τεχνολογίες στον ιστότοπό μας. Τα περιορίζουμε στο ελάχιστο και δεν χρησιμοποιούμε cookies διαφήμισης ή παρακολούθησης τρίτων.",
+  sections: [
+    {
+      title: "Τι είναι τα cookies",
+      paragraphs: [
+        "Τα cookies είναι μικρά αρχεία κειμένου που αποθηκεύονται στη συσκευή σας όταν επισκέπτεστε έναν ιστότοπο. Παρόμοιες τεχνολογίες, όπως το local storage του browser, μπορούν επίσης να θυμούνται προτιμήσεις μεταξύ επισκέψεων.",
+      ],
+    },
+    {
+      title: "Cookies που χρησιμοποιούμε",
+      paragraphs: [
+        "Προς το παρόν χρησιμοποιούμε μόνο αποθηκευτικό χώρο για βασικές προτιμήσεις: το επιλεγμένο θέμα (φωτεινό ή σκοτεινό) και την επιλεγμένη γλώσσα. Αυτά αποθηκεύονται τοπικά στον browser σας για καλύτερη εμπειρία σε επόμενες επισκέψεις.",
+        "Δεν χρησιμοποιούμε cookies analytics, διαφήμισης ή παρακολούθησης κοινωνικών δικτύων σε αυτόν τον ιστότοπο προς το παρόν.",
+      ],
+    },
+    {
+      title: "Διαχείριση cookies",
+      paragraphs: [
+        "Μπορείτε να διαγράψετε τα δεδομένα του ιστότοπου ανά πάσα στιγμή από τις ρυθμίσεις του browser σας. Η διαγραφή θα επαναφέρει τις προτιμήσεις θέματος και γλώσσας στην επόμενη επίσκεψή σας.",
+      ],
+    },
+    {
+      title: "Επικοινωνία",
+      paragraphs: [
+        `Ερωτήσεις σχετικά με αυτή την πολιτική μπορούν να αποσταλούν στο ${COMPANY_EMAIL}.`,
+      ],
+    },
+  ],
+};
+
+const cookiesFil: LegalDocument = {
+  title: "Cookie Policy",
+  intro:
+    "Ipinaliliwanag ng patakarang ito kung paano gumagamit ang Compile Systems Ltd ng cookies at katulad na teknolohiya sa aming website. Pinapanatili namin itong minimal at hindi kami gumagamit ng advertising o third-party tracking cookies.",
+  sections: [
+    {
+      title: "Ano ang cookies",
+      paragraphs: [
+        "Ang cookies ay maliliit na text file na naka-store sa inyong device kapag bumisita kayo sa isang website. Ang katulad na teknolohiya, tulad ng browser local storage, ay maaari ring mag-remember ng mga preference sa pagitan ng mga pagbisita.",
+      ],
+    },
+    {
+      title: "Cookies na ginagamit namin",
+      paragraphs: [
+        "Sa ngayon, gumagamit lang kami ng essential preference storage: ang napiling theme (light o dark) at ang napiling wika. Naka-store ang mga ito locally sa inyong browser para mas maganda ang inyong karanasan sa susunod na pagbisita.",
+        "Hindi kami gumagamit ng analytics, advertising, o social-media tracking cookies sa website na ito sa ngayon.",
+      ],
+    },
+    {
+      title: "Pamamahala ng cookies",
+      paragraphs: [
+        "Maaari ninyong i-clear ang site data anumang oras sa pamamagitan ng inyong browser settings. Ire-reset nito ang inyong theme at language preferences sa susunod na pagbisita.",
+      ],
+    },
+    {
+      title: "Contact",
+      paragraphs: [
+        `Ang mga tanong tungkol sa patakarang ito ay maaaring ipadala sa ${COMPANY_EMAIL}.`,
+      ],
+    },
+  ],
+};
+
 const clientsFil: ClientItem[] = [
   {
     id: "sparxIQ",
@@ -798,13 +906,22 @@ export const translations: Record<Locale, Translations> = {
       contact: "Contact",
       privacyPolicy: "Privacy Policy",
       termsOfUse: "Terms of Use",
+      cookiePolicy: "Cookie Policy",
       copyright: "© {year} Compile Systems Ltd. All rights reserved.",
+      cta: "Discuss your project →",
+      language: "Language",
+      followUs: "Follow us",
+      registration: "Reg. No. {number}",
+      vat: "VAT {number}",
+      linkedin: "LinkedIn",
+      github: "GitHub",
     },
     legal: {
       backToHome: "Back to home",
       lastUpdated: "Last updated: June 2026",
       privacy: privacyEn,
       terms: termsEn,
+      cookies: cookiesEn,
     },
     scrollToTop: "Scroll to top",
     navMenu: {
@@ -941,13 +1058,22 @@ export const translations: Record<Locale, Translations> = {
       contact: "Επικοινωνία",
       privacyPolicy: "Πολιτική Απορρήτου",
       termsOfUse: "Όροι Χρήσης",
+      cookiePolicy: "Πολιτική Cookies",
       copyright: "© {year} Compile Systems Ltd. Με επιφύλαξη παντός δικαιώματος.",
+      cta: "Συζητήστε το έργο σας →",
+      language: "Γλώσσα",
+      followUs: "Ακολουθήστε μας",
+      registration: "Αρ. Εγγραφής {number}",
+      vat: "ΦΠΑ {number}",
+      linkedin: "LinkedIn",
+      github: "GitHub",
     },
     legal: {
       backToHome: "Επιστροφή στην αρχική",
       lastUpdated: "Τελευταία ενημέρωση: Ιούνιος 2026",
       privacy: privacyEl,
       terms: termsEl,
+      cookies: cookiesEl,
     },
     scrollToTop: "Μετάβαση στην κορυφή",
     navMenu: {
@@ -1084,13 +1210,22 @@ export const translations: Record<Locale, Translations> = {
       contact: "Contact",
       privacyPolicy: "Privacy Policy",
       termsOfUse: "Terms of Use",
+      cookiePolicy: "Cookie Policy",
       copyright: "© {year} Compile Systems Ltd. Lahat ng karapatan ay nakalaan.",
+      cta: "Pag-usapan ang inyong proyekto →",
+      language: "Wika",
+      followUs: "Sundan kami",
+      registration: "Reg. No. {number}",
+      vat: "VAT {number}",
+      linkedin: "LinkedIn",
+      github: "GitHub",
     },
     legal: {
       backToHome: "Bumalik sa home",
       lastUpdated: "Huling na-update: Hunyo 2026",
       privacy: privacyFil,
       terms: termsFil,
+      cookies: cookiesFil,
     },
     scrollToTop: "Bumalik sa taas",
     navMenu: {

@@ -9,7 +9,7 @@ import { SiteFooter } from "./site-footer";
 import { ThemeToggle } from "./theme-toggle";
 
 type LegalPageProps = {
-  document: "privacy" | "terms";
+  document: "privacy" | "terms" | "cookies";
 };
 
 function LegalDocumentContent({ content }: { content: LegalDocument }) {
@@ -38,7 +38,12 @@ function LegalDocumentContent({ content }: { content: LegalDocument }) {
 
 export function LegalPage({ document }: LegalPageProps) {
   const { t } = useI18n();
-  const content = document === "privacy" ? t.legal.privacy : t.legal.terms;
+  const content =
+    document === "privacy"
+      ? t.legal.privacy
+      : document === "terms"
+        ? t.legal.terms
+        : t.legal.cookies;
 
   return (
     <>

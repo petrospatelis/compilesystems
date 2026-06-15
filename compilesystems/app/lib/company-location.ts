@@ -4,3 +4,8 @@ export const companyMapLocation = {
   longitude: 32.8987841,
   zoom: 17,
 } as const;
+
+export function getGoogleMapsSearchUrl() {
+  const { latitude, longitude, zoom } = companyMapLocation;
+  return `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}&zoom=${zoom}`;
+}
