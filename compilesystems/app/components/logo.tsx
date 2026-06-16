@@ -1,3 +1,5 @@
+import { logoMarkPaths, logoMarkStroke, logoMarkViewBox } from "../lib/logo-mark";
+
 type LogoProps = {
   showSlogan?: boolean;
   showWordmark?: boolean;
@@ -9,7 +11,7 @@ type LogoProps = {
 export function LogoMark({ className = "h-9 w-9" }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 48 48"
+      viewBox={logoMarkViewBox}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden
@@ -17,24 +19,24 @@ export function LogoMark({ className = "h-9 w-9" }: { className?: string }) {
     >
       <rect width="48" height="48" rx="12" className="fill-accent-muted" />
       <path
-        d="M19 15 11 24l8 9"
+        d={logoMarkPaths.left}
         className="stroke-foreground"
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        strokeWidth={logoMarkStroke.width}
+        strokeLinecap={logoMarkStroke.linecap}
+        strokeLinejoin={logoMarkStroke.linejoin}
       />
       <path
-        d="m22 33 4-18"
+        d={logoMarkPaths.center}
         className="stroke-accent"
-        strokeWidth="3"
-        strokeLinecap="round"
+        strokeWidth={logoMarkStroke.width}
+        strokeLinecap={logoMarkStroke.linecap}
       />
       <path
-        d="m29 15 8 9-8 9"
+        d={logoMarkPaths.right}
         className="stroke-accent"
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        strokeWidth={logoMarkStroke.width}
+        strokeLinecap={logoMarkStroke.linecap}
+        strokeLinejoin={logoMarkStroke.linejoin}
       />
     </svg>
   );
