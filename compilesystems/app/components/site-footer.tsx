@@ -12,6 +12,7 @@ import {
 } from "../lib/site";
 import { useI18n } from "./i18n-provider";
 import { Logo } from "./logo";
+import { ScrollToTop } from "./scroll-to-top";
 import { SmoothScrollLink } from "./smooth-scroll-link";
 
 const footerNavItems = [
@@ -291,20 +292,23 @@ export function SiteFooter() {
             </ul>
           </div>
         </div>
+      </div>
 
-        <div className="site-footer__bottom">
-          <p className="site-footer__text text-center">
+      <div className="site-footer__bottom">
+        <div className="site-footer__bottom-row">
+          <p className="site-footer__text">
             {t.footer.copyright.replace(
               "{year}",
               String(new Date().getFullYear()),
             )}
           </p>
-          {legalDetails.length > 0 && (
-            <p className="site-footer__meta text-center">
-              {legalDetails.join(" · ")}
-            </p>
-          )}
+          <ScrollToTop />
         </div>
+        {legalDetails.length > 0 && (
+          <p className="site-footer__meta">
+            {legalDetails.join(" · ")}
+          </p>
+        )}
       </div>
     </footer>
   );

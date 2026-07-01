@@ -10,7 +10,6 @@ import { ServiceIcon } from "./service-icons";
 import { SiteHeader } from "./site-header";
 import { useActiveSection } from "../hooks/use-active-section";
 import { ScrollRevealSection } from "./scroll-reveal-section";
-import { ScrollToTop } from "./scroll-to-top";
 import { SiteFooter } from "./site-footer";
 import { SmoothScrollLink } from "./smooth-scroll-link";
 import { companyMapLocation } from "../lib/company-location";
@@ -151,8 +150,6 @@ export function HomeContent() {
           </div>
         </ScrollRevealSection>
       </main>
-
-      <ScrollToTop />
 
       <SiteFooter />
     </>
