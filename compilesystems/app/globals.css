@@ -12,21 +12,24 @@
     BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --page-gutter: 1rem;
   --page-max-width: 72rem;
-  --section-space: 4rem;
+  --section-space: 2.25rem;
+  --section-space-hero: 3.25rem;
   --header-height: 3.5rem;
 }
 
 @media (min-width: 640px) {
   :root {
     --page-gutter: 1.5rem;
-    --section-space: 5rem;
+    --section-space: 3rem;
+    --section-space-hero: 4rem;
     --header-height: 4rem;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --section-space: 6rem;
+    --section-space: 3.75rem;
+    --section-space-hero: 5rem;
   }
 }
 
@@ -40,7 +43,8 @@
   :root {
     --page-max-width: 88rem;
     --page-gutter: 2rem;
-    --section-space: 7rem;
+    --section-space: 4.5rem;
+    --section-space-hero: 5.75rem;
   }
 }
 
@@ -92,6 +96,10 @@ body {
 
 .section-y {
   padding-block: var(--section-space);
+}
+
+.section-y-hero {
+  padding-block: var(--section-space-hero);
 }
 
 .section-title {

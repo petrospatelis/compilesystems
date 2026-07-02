@@ -79,7 +79,7 @@ export function HomeContent() {
           className="relative overflow-hidden border-b border-border/60"
         >
           <HeroBackgroundSlider />
-          <div className="page-container section-y hero-section">
+          <div className="page-container section-y-hero hero-section">
             <p className="hero-section__badge">{t.hero.badge}</p>
             <h1 className="hero-section__title">
               {t.hero.titleBefore}
